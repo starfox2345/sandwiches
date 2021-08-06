@@ -8,4 +8,7 @@ class SandwichesController < ApplicationController
 
     end
     
+    def most_expensive
+
+    end
 end
