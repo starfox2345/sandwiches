@@ -3,5 +3,7 @@ class Sandwich < ApplicationRecord
         "#{self.name} - #{self.temperature}"
     end
 
-
+    def self.order_by_price
+        self.order(:price)
+    end
 end
