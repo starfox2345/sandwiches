@@ -9,7 +9,7 @@ class SandwichesController < ApplicationController
     end
     
     def most_expensive
-        @sandwiches = Sandwich.order_by_price
+        @sandwiches = Sandwich.most_expensive
         render :index
     end
 end
