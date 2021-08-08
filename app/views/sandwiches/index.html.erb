@@ -1,5 +1,5 @@
 <h1>Sandwiches</h1>
 
 <% @sandwiches.each do |sandwich| %>
-<%= link_to "#{sandwich.name} - #{sandwich.temperature} - #{sandwich.condition} - $#{sandwich.price}", sandwich_path(sandwich) %><br>
+<%= link_to sandwich.name_temperature_condition_price, sandwich_path(sandwich) %><br>
 <% end %>
