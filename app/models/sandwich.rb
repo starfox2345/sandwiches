@@ -1,5 +1,7 @@
 class Sandwich < ApplicationRecord
-    def name_temperature_condition_price
-        "#{self.name} - #{self.temperature} - #{self.condition} - $#{self.price}"
+    def name_temperature
+        "#{self.name} - #{self.temperature}"
     end
+
+
 end

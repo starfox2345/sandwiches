@@ -5,10 +5,11 @@ class SandwichesController < ApplicationController
     end
 
     def show
-
+        @sandwich = Sandwich.find(params[:id])
     end
     
     def most_expensive
-
+        @sandwiches = Sandwich.order_by_price
+        render :index
     end
 end
