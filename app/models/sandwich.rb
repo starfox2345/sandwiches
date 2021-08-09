@@ -1,5 +1,8 @@
 class Sandwich < ApplicationRecord
-    validates :price, presence: true
+    validates :condition, presence: true
+    validates :name, presence: true, length: {minimum: 2}
+    validates :price, numericality: {greater_than: 0, lesser_than: 100}
+    validates :temperature, presence: true
 
 
     def name_temperature
