@@ -1,4 +1,15 @@
 <h1>Sandwich form</h1>
+<% if @sandwich.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@sandwich.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    <ul>
+      <% @sandwich.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <%= form_with(model: @sandwich) do |f| %>
     <%= f.label :name %>:
@@ -8,7 +19,7 @@
     <%= f.label :condition %>:
     <%= f.text_field :condition %><br>
     <%= f.label :price %>:
-    <%= f.number_field :price %><br>
+    <%= f.number_field :price, step: 0.25 %><br>
     
     <%= submit_tag "Create Sandwich" %>
 <% end %>
