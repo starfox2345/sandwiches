@@ -2,10 +2,43 @@
 
 <form method="post" action="/sandwiches">
     <input type="hidden" name=authenticity_token value="<%= form_authenticity_token %>">
-    
+
     <label for="sandwich_name">Name: </label>
     <input type="text" name="sandwich[name]" id="sandwich_name">
     <label for="sandwich_price">Price: </label>
     <input type="number" name="sandwich[price]" id="sandwich_price" step="0.5">
     <input type="submit" value="Create Sandwich">
 </form>
+
+<br><br>
+
+<%= form_tag(sandwiches_path) do %>
+    <%= label_tag :"Name: " %>
+    <%= text_field_tag :"sandwich[name]" %>
+    <%= label_tag :"Price: " %>
+    <%= number_field_tag :"sandwich[price]" %>
+
+    <%= submit_tag "Create Sandwich" %>
+<% end %>
+
+<br><br>
+
+<%= form_for(@sandwich) do |f| %>
+    <%= f.label :name %>:
+    <%= f.text_field :name %>
+    <%= f.label :price %>:
+    <%= f.number_field :price, step: 0.5 %>
+    
+    <%= submit_tag "Create Sandwich" %>
+<% end %>
+
+<br><br>
+
+<%= form_with(model: @sandwich) do |f| %>
+    <%= f.label :name %>:
+    <%= f.text_field :name %>
+    <%= f.label :price %>:
+    <%= f.number_field :price, step: 0.5 %>
+    
+    <%= submit_tag "Create Sandwich" %>
+<% end %>

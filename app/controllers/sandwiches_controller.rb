@@ -14,7 +14,7 @@ class SandwichesController < ApplicationController
     end
 
     def new
-        
+        @sandwich = Sandwich.new
     end
 
     def create
@@ -24,6 +24,14 @@ class SandwichesController < ApplicationController
          else
             render :new
          end
+    end
+
+    def edit
+        @sandwich = Sandwich.find(params[:id])
+    end
+
+    def update
+
     end
 
     private
