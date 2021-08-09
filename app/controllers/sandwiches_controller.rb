@@ -31,7 +31,18 @@ class SandwichesController < ApplicationController
     end
 
     def update
+        @sandwich = Sandwich.find(params[:id])       
+        if @sandwich.update(sandwich_params)
+            redirect_to sandwich_path(@sandwich)
+        else
+            render :edit
+        end
+    end
 
+    def destroy
+        @sandwich = Sandwich.find(params[:id])       
+        @sandwich.destroy
+        redirect_to sandwiches_path
     end
 
     private
