@@ -12,4 +12,14 @@ class SandwichesController < ApplicationController
         @sandwiches = Sandwich.most_expensive
         render :index
     end
+
+    def new
+
+    end
+
+    def create
+
+    end
+
+    
 end
