@@ -12,13 +12,13 @@
 <% end %>
 
 <%= form_with(model: @sandwich) do |f| %>
-    <%= f.label :name %>:
+    <%= f.label :name %>
     <%= f.text_field :name %><br>
-    <%= f.label :temperature %>:
+    <%= f.label :temperature %>
     <%= f.text_field :temperature %><br>
-    <%= f.label :condition %>:
+    <%= f.label :condition %>
     <%= f.text_field :condition %><br>
-    <%= f.label :price %>:
+    <%= f.label :price %>
     <%= f.number_field :price, step: 0.25 %><br>
     
     <%= submit_tag "Create Sandwich" %>
