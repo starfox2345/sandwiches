@@ -20,6 +20,7 @@
     <%= f.label :price %>
     <%= f.number_field :price, step: 0.25 %><br>
     <%= f.fields_for :name do |s| %>
+    <h3>Create a User</h3>
       <%= s.label :name %>
       <%= s.text_field :name %><br>
       <%= s.label :gender %>
