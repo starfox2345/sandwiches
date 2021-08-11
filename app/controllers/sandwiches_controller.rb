@@ -15,6 +15,7 @@ class SandwichesController < ApplicationController
 
     def new
         @sandwich = Sandwich.new
+        @sandwich.build_order
     end
 
     def create
