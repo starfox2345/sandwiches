@@ -1,4 +1,4 @@
 class Order < ApplicationRecord
     belongs_to :user
-    has_many :sandwiches
+    belongs_to :sandwich
 end

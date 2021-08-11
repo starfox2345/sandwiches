@@ -1,6 +1,6 @@
 class Sandwich < ApplicationRecord
-    belongs_to :order
-    has_many :users, through: :order
+    has_many :orders
+    has_many :users, through: :orders
 
     accepts_nested_attributes_for :order #order_attributes=
     
