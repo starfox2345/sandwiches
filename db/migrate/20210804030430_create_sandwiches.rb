@@ -5,6 +5,7 @@ class CreateSandwiches < ActiveRecord::Migration[6.1]
       t.string :temperature
       t.float :price
       t.string :condition
+      t.string :category_id
 
       t.timestamps
     end
