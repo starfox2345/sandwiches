@@ -11,6 +11,7 @@ class CategoriesController < ApplicationController
     def new
         @category = Category.new
         @category.sandwiches.build
+        @category.orders.build
     end
 
     def create
@@ -44,7 +45,7 @@ class CategoriesController < ApplicationController
    private
 
    def category_params
-        params.require(:category).permit(:name, sandwiches_attributes: [:ingredient, :price])
+        params.require(:category).permit(:name, :sandwich_id, sandwiches_attributes: [:ingredient, :price], orders_attributes: [:delivery])
    end
 
 end

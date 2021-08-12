@@ -14,10 +14,11 @@
 <%= form_with(model: @category) do |f| %>
 
     <h3>Select an Existing Category:</h3>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
       <%= f.label "Category" %>
       <%= f.text_field :name %><br>
 
-    <%= f.fields_for :sandwiches do |s| %>
+    <%= f.fields_for :sandwich do |s| %>
         <%= s.label :ingredient %>
         <%= s.text_field :ingredient %><br>
         <%= s.label :price %>
