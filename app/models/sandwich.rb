@@ -4,7 +4,7 @@ class Sandwich < ApplicationRecord
 
     
     validates :condition, presence: true
-    validates :name, presence: true, uniqueness: {scope: [:name]}, length: {minimum: 2, message: "needs to be longer than 2 letters"}
+    validates :recipe, presence: true, uniqueness: {scope: [:recipe]}, length: {minimum: 2, message: "needs to be longer than 2 letters"}
     validates :price, numericality: {greater_than: 0, lesser_than: 100}
     validates :temperature, presence: true, temperature_name: true
     
@@ -12,8 +12,8 @@ class Sandwich < ApplicationRecord
     # validate :too_many_sandwiches
     
 
-    def name_temperature
-        "#{self.name} - #{self.temperature}"
+    def recipe_temperature
+        "#{self.recipe} - #{self.temperature}"
     end
 
     def self.most_expensive

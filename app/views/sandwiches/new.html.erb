@@ -13,8 +13,8 @@
 
 <%= form_with(model: @sandwich) do |f| %>
 
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
+    <%= f.label :recipe %>
+    <%= f.text_field :recipe %><br>
     <%= f.label :temperature %>
     <%= f.text_field :temperature %><br>
     <%= f.label :condition %>
@@ -23,8 +23,8 @@
     <%= f.number_field :price, step: 0.25 %><br>
     <%= f.fields_for :orders do |s| %>
     <h3>Create an Order</h3>
-      <%= s.label :name %>
-      <%= s.text_field :name %><br>
+      <%= s.label :order_name %>
+      <%= s.text_field :order_name %><br>
 
     <% end %>
     <%= f.submit "Create Sandwich" %>

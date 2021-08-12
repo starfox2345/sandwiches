@@ -1,5 +1,5 @@
 <h1>Sandwiches</h1>
 
 <% @sandwiches.each do |sandwich| %>
-<%= link_to sandwich.name_temperature, sandwich_path(sandwich) %> - <%= number_to_currency(sandwich.price)%><br>
+<%= link_to sandwich.recipe_temperature, sandwich_path(sandwich) %> - <%= number_to_currency(sandwich.price)%><br>
 <% end %>
