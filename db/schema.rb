@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2021_08_12_022408) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "order_name"
+    t.string "delivery"
     t.integer "user_id"
     t.integer "sandwich_id"
     t.datetime "created_at", precision: 6, null: false
@@ -25,8 +25,7 @@ ActiveRecord::Schema.define(version: 2021_08_12_022408) do
   end
 
   create_table "sandwiches", force: :cascade do |t|
-    t.string "recipe"
-    t.string "temperature"
+    t.string "name"
     t.float "price"
     t.string "condition"
     t.integer "category_id"

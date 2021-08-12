@@ -15,7 +15,7 @@ class SandwichesController < ApplicationController
 
     def new
         @sandwich = Sandwich.new
-        @sandwich.build_order
+        
     end
 
     def create
@@ -49,7 +49,7 @@ class SandwichesController < ApplicationController
     private
 
     def sandwich_params
-        params.require(:sandwich).permit(:recipe, :temperature, :price, :condition)
+        params.require(:sandwich).permit(:name)
     end
     
 end

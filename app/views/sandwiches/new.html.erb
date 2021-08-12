@@ -21,7 +21,7 @@
     <%= f.text_field :condition %><br>
     <%= f.label :price %>
     <%= f.number_field :price, step: 0.25 %><br>
-    <%= f.fields_for :orders do |s| %>
+    <%= f.fields_for :order do |s| %>
     <h3>Create an Order</h3>
       <%= s.label :order_name %>
       <%= s.text_field :order_name %><br>
