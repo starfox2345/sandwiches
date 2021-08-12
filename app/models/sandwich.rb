@@ -2,7 +2,6 @@ class Sandwich < ApplicationRecord
     has_many :orders
     has_many :users, through: :orders
 
-    accepts_nested_attributes_for :order #order_attributes=
     
     validates :condition, presence: true
     validates :name, presence: true, uniqueness: {scope: [:name]}, length: {minimum: 2, message: "needs to be longer than 2 letters"}
