@@ -4,6 +4,7 @@ class Sandwich < ApplicationRecord
     belongs_to :category
 
     accepts_nested_attributes_for :category
+    accepts_nested_attributes_for :orders
 
     
     validates :ingredient, presence: true

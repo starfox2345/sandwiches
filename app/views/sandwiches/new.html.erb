@@ -15,13 +15,14 @@
 
     <%= f.label :name %>
     <%= f.text_field :name %><br>
-    <%= f.label :condition %>
-    <%= f.text_field :condition %><br>
+    <%= f.label :ingredient %>
+    <%= f.text_field :ingredient %><br>
     <%= f.label :price %>
     <%= f.number_field :price, step: 0.25 %><br>
+
     <%= f.fields_for :category do |c| %>
-      <%= c.label :category %>
-      <%= c.text_field :category_name %><br>
+      <%= c.label "Category" %>
+      <%= c.text_field :name %><br>
     <% end %>
 
     <%= f.fields_for :order do |s| %>
