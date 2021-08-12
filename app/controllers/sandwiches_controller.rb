@@ -18,6 +18,7 @@ class SandwichesController < ApplicationController
     def new
         @sandwich = Sandwich.new
         @sandwich.build_category
+       
     end
 
     def create
