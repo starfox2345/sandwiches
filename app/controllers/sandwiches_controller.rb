@@ -1,5 +1,11 @@
 class SandwichesController < ApplicationController
 
+        
+    def most_expensive
+        @sandwiches = Sandwich.most_expensive
+        render :index
+    end
+
     def index
         @sandwiches = Sandwich.all
     end
@@ -7,15 +13,11 @@ class SandwichesController < ApplicationController
     def show
         @sandwich = Sandwich.find(params[:id])
     end
-    
-    def most_expensive
-        @sandwiches = Sandwich.most_expensive
-        render :index
-    end
+
 
     def new
         @sandwich = Sandwich.new
-        
+        @sandwich.build_category
     end
 
     def create
@@ -49,7 +51,7 @@ class SandwichesController < ApplicationController
     private
 
     def sandwich_params
-        params.require(:sandwich).permit(:name)
+        params.require(:sandwich).permit(:name, :price, :condition)
     end
     
 end

@@ -3,18 +3,19 @@ class Sandwich < ApplicationRecord
     has_many :users, through: :orders
     belongs_to :category
 
+    accepts_nested_attributes_for :category
+
     
     validates :condition, presence: true
-    validates :recipe, presence: true, uniqueness: {scope: [:recipe]}, length: {minimum: 2, message: "needs to be longer than 2 letters"}
+    validates :name, presence: true, uniqueness: {scope: [:name]}, length: {minimum: 2, message: "needs to be longer than 2 letters"}
     validates :price, numericality: {greater_than: 0, lesser_than: 100}
-    validates :temperature, presence: true, temperature_name: true
     
 
     # validate :too_many_sandwiches
     
 
-    def recipe_temperature
-        "#{self.recipe} - #{self.temperature}"
+    def name_condition
+        "#{self.name} - #{self.condition}"
     end
 
     def self.most_expensive

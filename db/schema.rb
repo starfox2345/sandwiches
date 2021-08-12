@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2021_08_12_022408) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "delivery"
+    t.boolean "delivery"
     t.integer "user_id"
     t.integer "sandwich_id"
     t.datetime "created_at", precision: 6, null: false
