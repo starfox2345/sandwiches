@@ -44,7 +44,7 @@ class CategoriesController < ApplicationController
    private
 
    def category_params
-        params.require(:category).permit(:name)
+        params.require(:category).permit(:name, sandwiches_attributes: [:ingredient, :price])
    end
 
 end
