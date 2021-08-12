@@ -3,7 +3,7 @@ class CreateSandwiches < ActiveRecord::Migration[6.1]
     create_table :sandwiches do |t|
       t.string :name
       t.float :price
-      t.string :condition
+      t.string :ingredient
       t.integer :category_id
 
       t.timestamps

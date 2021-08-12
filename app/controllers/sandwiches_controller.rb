@@ -51,7 +51,7 @@ class SandwichesController < ApplicationController
     private
 
     def sandwich_params
-        params.require(:sandwich).permit(:name, :price, :condition)
+        params.require(:sandwich).permit(:name, :price, :ingredient)
     end
     
 end

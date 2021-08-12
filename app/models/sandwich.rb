@@ -6,7 +6,7 @@ class Sandwich < ApplicationRecord
     accepts_nested_attributes_for :category
 
     
-    validates :condition, presence: true
+    validates :ingredient, presence: true
     validates :name, presence: true, uniqueness: {scope: [:name]}, length: {minimum: 2, message: "needs to be longer than 2 letters"}
     validates :price, numericality: {greater_than: 0, lesser_than: 100}
     
@@ -14,8 +14,8 @@ class Sandwich < ApplicationRecord
     # validate :too_many_sandwiches
     
 
-    def name_condition
-        "#{self.name} - #{self.condition}"
+    def name_ingredient
+        "#{self.name} - #{self.ingredient}"
     end
 
     def self.most_expensive
