@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2021_08_12_022408) do
   end
 
   create_table "sandwiches", force: :cascade do |t|
-    t.string "name"
     t.float "price"
     t.string "ingredient"
     t.integer "category_id"
