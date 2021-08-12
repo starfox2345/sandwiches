@@ -1,0 +1,35 @@
+<h1>Order form</h1>
+<% if @order.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@order.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    <ul>
+      <% @order.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: @order) do |f| %>
+
+    <%= f.label :ingredient %>
+    <%= f.text_field :ingredient %><br>
+    <%= f.label :price %>
+    <%= f.number_field :price, step: 0.25 %><br>
+
+    <h3>Select an Existing Category:</h3>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+    <%= f.fields_for :category do |c| %>
+      <%= c.label "Category" %>
+      <%= c.text_field :name %><br>
+    <% end %>
+
+    <%= f.fields_for :order do |s| %>
+      <%= s.label "delivery?" %>
+      <%= s.check_box :delivery %><br>
+
+
+    <% end %>
+    <%= f.submit "Create Sandwich" %>
+<% end %>
