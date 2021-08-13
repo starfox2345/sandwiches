@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
     has_many :sandwiches
-    has_many :orders, through: :sandwiches
+    
 
     # def sandwich_attributes=(hash_of_attributes)
     #     if !hash_of_attributes["name"].blank?
@@ -8,7 +8,6 @@ class Category < ApplicationRecord
     #     end
     # end
 
-    accepts_nested_attributes_for :orders
     accepts_nested_attributes_for :sandwiches
     
     validates :name, presence: true, uniqueness: {scope: [:name]}, length: {minimum: 2, message: "needs to be longer than 2 letters"}

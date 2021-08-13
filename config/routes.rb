@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   # get '/sandwiches', to: 'sandwiches#index'
   # get '/sandwiches/:id', to: 'sandwiches#show', as: 'sandwich'
   resources :sandwiches
-  resources :categories do 
+
+  resources :categories do
     resources :sandwiches
   end
   

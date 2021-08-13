@@ -13,20 +13,8 @@
 
 <%= form_with(model: @category) do |f| %>
 
-
-
-    <%= f.fields_for :sandwich do |s| %>
-        <%= s.label :ingredient %>
-        <%= s.text_field :ingredient %><br>
-        <%= s.label :price %>
-        <%= s.number_field :price, step: 0.25 %><br>
-    <% end %>
-
-
-    <%= f.fields_for :order do |o| %>
-      <%= o.label "delivery?" %>
-      <%= o.check_box :delivery %><br>
-    <% end %>
+      <%= f.label "Category" %>
+      <%= f.text_field :name %><br>
 
     <%= f.submit %>
 <% end %>
