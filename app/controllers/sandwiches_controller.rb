@@ -18,11 +18,10 @@ class SandwichesController < ApplicationController
     def new
         @sandwich = Sandwich.new
         @sandwich.build_category
-       
     end
 
     def create
-         @sandwich = Sandwich.create(sandwich_params)
+         @sandwich = Sandwich.new(sandwich_params)
          if @sandwich.save
             redirect_to sandwiches_path
          else
@@ -36,7 +35,8 @@ class SandwichesController < ApplicationController
 
     def update
         @sandwich = Sandwich.find(params[:id])       
-        if @sandwich.update(sandwich_params)
+        if @sandwich.valid?
+            @sandwich.update(sandwich_params)
             redirect_to sandwich_path(@sandwich)
         else
             render :edit

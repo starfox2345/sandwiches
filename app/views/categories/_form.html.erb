@@ -1,3 +1,11 @@
 
-      <%= fp.label "Category" %>
-      <%= fp.text_field :name %><br>
+<%= render partial: "layouts/error", locals: { object: @category } %>
+
+<%= form_with(model: @category) do |f| %>
+
+      <%= f.label "Category" %>
+      <%= f.text_field :name %><br>
+
+
+    <%= f.submit %>
+<% end %>

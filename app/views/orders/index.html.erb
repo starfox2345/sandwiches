@@ -1,0 +1,5 @@
+<h1>Orders Sandwich</h1>
+
+<% @orders.each do |order| %>
+    <%= link_to order.category.name, order_path(order) %> - <%= number_to_currency(order.price)%><br>
+<% end %>

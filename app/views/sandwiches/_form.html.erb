@@ -1,4 +1,34 @@
-    <%= fp.label :ingredient %>
-    <%= fp.text_field :ingredient %><br>
-    <%= fp.label :price %>
-    <%= fp.number_field :price, step: 0.25 %><br>
+<% if @sandwich.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@sandwich.errors.count, "error") %> prohibited from being saved:</h2>
+
+    <ul>
+      <% @sandwich.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for(@sandwich) do |f| %>
+
+    <%= f.label :ingredient %>
+    <%= f.text_field :ingredient %><br>
+    <%= f.label :price %>
+    <%= f.number_field :price, step: 0.25 %><br>
+
+    <h3>Select an Existing Category:</h3>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+    <%= f.fields_for :category do |c| %>
+      <%= c.label "Category" %>
+      <%= c.text_field :name %><br>
+    <% end %>
+
+    <%= f.fields_for :order do |s| %>
+      <%= s.label "delivery?" %>
+      <%= s.text_field :delivery %><br>
+
+
+    <% end %>
+    <%= f.submit "Create Sandwich" %>
+<% end %>

@@ -14,12 +14,14 @@ class OrdersController < ApplicationController
     end
 
     def new
-        @order = Order.new
-        
+        @sandwich = Sandwich.find_by_id(params[:sandwich_id])
+        @order = @sandwich.orders.build
     end
 
     def create
-         @order = Order.create(order_params)
+        @sandwich = Sandwich.find_by_id(params[:sandwich_id])
+         @order = Order.new(order_params)
+         @order.user = current_user
          if @order.save
             redirect_to orders_path
          else
@@ -49,7 +51,7 @@ class OrdersController < ApplicationController
     private
 
     def order_params
-        params.require(:order).permit(:name, :temperature, :price, :condition)
+        params.require(:order).permit(:delivery, :sandwich_id, sandwich_attributes: [:price, :ingredient] )
     end
     
 end
