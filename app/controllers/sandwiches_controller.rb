@@ -1,5 +1,5 @@
 class SandwichesController < ApplicationController
-
+    layout 'sandwich'
         
     def most_expensive
         @sandwiches = Sandwich.most_expensive
