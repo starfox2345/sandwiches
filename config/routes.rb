@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: "sessions#update"
 
   resources :sandwiches
-
+  resources :orders
   resources :categories
   
   resources :orders do 
