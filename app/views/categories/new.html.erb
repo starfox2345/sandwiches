@@ -13,8 +13,7 @@
 
 <%= form_with(model: @category) do |f| %>
 
-      <%= f.label "Category" %>
-      <%= f.text_field :name %><br>
+  <%= render partial: "form", locals: { fp: f } %>
 
     <%= f.submit %>
 <% end %>

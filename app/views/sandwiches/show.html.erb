@@ -2,4 +2,5 @@
 
 Ingredient: <%= @sandwich.ingredient %><br>
 Price: <%= number_to_currency(@sandwich.price) %>
+<%= link_to "Edit", sandwich_path(@sandwich), method: 'update' %>
 <%= link_to "Delete", sandwich_path(@sandwich), method: 'delete' %>

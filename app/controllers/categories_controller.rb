@@ -12,7 +12,6 @@ class CategoriesController < ApplicationController
     def new
         @category = Category.new
         @category.sandwiches.build
-        @category.orders.build
     end
 
     def create
