@@ -1,5 +1,3 @@
 <h1>Sandwiches</h1>
 
-<% @sandwiches.each do |sandwich| %>
-    <%= link_to sandwich.category.name, sandwich_path(sandwich) %> - <%= number_to_currency(sandwich.price)%><br>
-<% end %>
+    <%= render partial: "sandwich", collection: @sandwiches%>
