@@ -4,6 +4,8 @@ class Sandwich < ApplicationRecord
     belongs_to :category
 
     accepts_nested_attributes_for :category
+    accepts_nested_attributes_for :orders
+
     
     def category_attributes=(hash_of_attributes)
         if !hash_of_attributes["name"].blank?

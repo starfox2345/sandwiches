@@ -30,11 +30,11 @@ class SandwichesController < ApplicationController
     end
 
     def edit
-        @sandwich = Sandwich.find(params[:id])
+        @sandwich = Sandwich.find_by_id(params[:id])
     end
 
     def update
-        @sandwich = Sandwich.find(params[:id])       
+        @sandwich = Sandwich.find_by_id(params[:id])       
         if @sandwich.valid?
             @sandwich.update(sandwich_params)
             redirect_to sandwich_path(@sandwich)
@@ -44,7 +44,7 @@ class SandwichesController < ApplicationController
     end
 
     def destroy
-        @sandwich = Sandwich.find(params[:id])       
+        @sandwich = Sandwich.find_by_id(params[:id])       
         @sandwich.destroy
         redirect_to sandwiches_path
     end
@@ -52,7 +52,7 @@ class SandwichesController < ApplicationController
     private
 
     def sandwich_params
-        params.require(:sandwich).permit(:price, :ingredient, :category_id, category_attributes: [:name])
+        params.require(:sandwich).permit(:price, :ingredient, :category_id, category_attributes: [:name], order_attributes: [:delivery])
     end
     
 end

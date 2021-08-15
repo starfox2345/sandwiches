@@ -17,12 +17,12 @@ class OrdersController < ApplicationController
     end
 
     def new
-        @sandwich = Sandwich.find_by_id(params[:sandwich_id])
+        @sandwich = Sandwich.find_by(params[:sandwich_id])
         @order = @sandwich.orders.build
     end
 
     def create
-        @sandwich = Sandwich.find_by_id(params[:sandwich_id])
+        @sandwich = Sandwich.find_by(params[:sandwich_id])
          @order = Order.new(order_params)
          @order.user = current_user
          if @order.save
@@ -33,12 +33,13 @@ class OrdersController < ApplicationController
     end
 
     def edit
-        @order = Order.find_by_id(params[:id])
+        @order = Order.find_by(params[:id])
     end
 
     def update
-        @order = Order.find(params[:id])       
-        if @order.update(order_params)
+        @order = Order.find_by(params[:id])
+        if @order.valid?
+            @order.update(order_params)
             redirect_to order_path(@order)
         else
             render :edit
@@ -46,7 +47,7 @@ class OrdersController < ApplicationController
     end
 
     def destroy
-        @order = Order.find(params[:id])       
+        @order = Order.find_by(params[:id])       
         @order.destroy
         redirect_to orders_path
     end
