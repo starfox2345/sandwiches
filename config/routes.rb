@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   get 'auth/github', as: "github_login"
   get '/auth/:provider/callback', to: "sessions#update"
 
-  resources :sandwiches
+  resources :sandwiches do
+    resources :orders, only: [:new, :create, :show]
+  end
   resources :orders
   resources :categories
-  
-  resources :orders do 
-    resources :sandwiches, only: [:new, :create, :show]
-  end
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+    
 
     def index
         @orders = Order.all
@@ -6,6 +7,8 @@ class OrdersController < ApplicationController
 
     def show
         @order = Order.find(params[:id])
+        @order.build_sandwich
+
     end
     
     def most_expensive
@@ -23,14 +26,14 @@ class OrdersController < ApplicationController
          @order = Order.new(order_params)
          @order.user = current_user
          if @order.save
-            redirect_to orders_path
+            redirect_to sandwich_order_path(@sandwich, @order)
          else
             render :new
          end
     end
 
     def edit
-        @order = Order.find(params[:id])
+        @order = Order.find_by_id(params[:id])
     end
 
     def update

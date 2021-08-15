@@ -1,16 +1,7 @@
-<% if @sandwich.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@sandwich.errors.count, "error") %> prohibited from being saved:</h2>
+<%= render partial: "layouts/error", locals: { object: @sandwich } %>
 
-    <ul>
-      <% @sandwich.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
 
-<%= form_for(@sandwich) do |f| %>
+<%= form_for([@order, @sandwich]) do |f| %>
 
     <%= f.label :ingredient %>
     <%= f.text_field :ingredient %><br>
@@ -27,7 +18,6 @@
     <%= f.fields_for :order do |s| %>
       <%= s.label "delivery?" %>
       <%= s.text_field :delivery %><br>
-
 
     <% end %>
     <%= f.submit "Create Sandwich" %>

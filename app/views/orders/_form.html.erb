@@ -1,36 +1,20 @@
-<% if @order.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@order.errors.count, "error") %> prohibited from being saved:</h2>
+<%= render partial: "layouts/error", locals: { object: @order } %>
 
-    <ul>
-      <% @order.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<%= form_for([@order, @sandwich]) do |f| %>
+<%= form_for([@sandwich, @order]) do |f| %>
 
     <%= f.label :delivery %>
     <%= f.text_field :delivery %><br>
 
-
- <!--   <h3>Select an Existing Category:</h3>
-    <%= f.collection_select :category_id, Category.all, :id, :name %>
-    <%= f.fields_for :category do |c| %>
-      <%= c.label "Category" %>
-      <%= c.text_field :name %><br>
-    <% end %> -->
-
+    
     <%= f.fields_for :sandwich do |s| %>
       <%= s.label "Price" %>
       <%= s.text_field :price %><br>
-      <%= s.label "Ingredients" %>
+      <%= s.label "Ingredient" %>
       <%= s.text_field :ingredient %><br>
-
-
-
     <% end %>
+
+    <%= f.hidden_field :sandwich_id, value: @sandwich.id%>
+
+
     <%= f.submit "Create Sandwich" %>
 <% end %>

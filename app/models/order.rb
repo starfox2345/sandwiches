@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
     belongs_to :user
     belongs_to :sandwich
-    #add validations
+
+    validates :delivery, presence: true
+
     accepts_nested_attributes_for :sandwich #sandwich_attributes=
 end
