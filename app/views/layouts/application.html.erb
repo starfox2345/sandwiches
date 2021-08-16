@@ -19,6 +19,10 @@
         <%= link_to "Categories", categories_path %>
 
         <%= button_to "Log in with Google", '/auth/google_oauth2' %>
+        <%= button_to "Log Out", logout_path, method: 'delete' %>
+        <% flash.each do |type, msg| %>
+          <%%= msg %>%>
+        <% end %>
       <%= yield %>
   </body>
 </html>

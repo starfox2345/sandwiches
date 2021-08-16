@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
+  delete '/logout', to: 'sessions#destroy'
   
   get '/sandwiches/most_expensive', to: 'sandwiches#most_expensive'
 
