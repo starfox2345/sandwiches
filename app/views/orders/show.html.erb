@@ -3,5 +3,6 @@
 
 Ingredient: <%= @order.sandwich.ingredient %><br>
 Price: <%= number_to_currency(@order.sandwich.price) %>
+
 <%= link_to "Edit", edit_order_path(@order) %>
 <%= link_to "Delete", order_path(@order), method: 'delete' %>

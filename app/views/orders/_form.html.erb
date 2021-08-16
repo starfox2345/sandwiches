@@ -2,9 +2,10 @@
 
 <%= form_for([@sandwich, @order]) do |f| %>
 
-    <%= f.label :delivery %>
-    <%= f.text_field :delivery %><br>
-
+    <%= f.fields_for :categories do |c| %>
+      <%= c.label "Category" %>
+      <%= c.text_field :name %><br>
+    <% end %>
     
     <%= f.fields_for :sandwich do |s| %>
       <%= s.label "Price" %>
@@ -13,10 +14,14 @@
       <%= s.text_field :ingredient %><br>
     <% end %>
 
+    
+    <%= f.label :delivery %>
+    <%= f.text_field :delivery %><br>
+
     <%= f.hidden_field :sandwich_id, value: @sandwich.id%>
 
+    <%= f.submit "Create/Edit Sandwich" %>
 
-    <%= f.submit "Create Sandwich" %>
 <% end %>
 
 

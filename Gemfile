@@ -5,6 +5,7 @@ ruby '2.6.1'
 
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 gem 'dotenv-rails'
+gem 'omniauth-rails_csrf_protection'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4'

@@ -4,5 +4,5 @@ class Order < ApplicationRecord
 
     validates :delivery, presence: true
 
-    accepts_nested_attributes_for :sandwich #sandwich_attributes=
+    accepts_nested_attributes_for :sandwich
 end

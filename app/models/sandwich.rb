@@ -15,7 +15,7 @@ class Sandwich < ApplicationRecord
     
     validates :ingredient, presence: true
     validates :price, numericality: {greater_than: 0, lesser_than: 100}
-      
+    validates :category, presence: true, uniqueness: true
 
     def name_ingredient
         "#{self.category.name} - #{self.ingredient}"

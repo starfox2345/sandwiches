@@ -1,7 +1,7 @@
 <h1><%= @sandwich.category.name %></h1>
 
 Ingredient: <%= @sandwich.ingredient %><br>
-Price: <%= number_to_currency(@sandwich.price) %>
+<%= sandwich_price %>
 <%= @sandwich.orders.each do |order| %>
      <%= order.delivery %>
 <% end %>

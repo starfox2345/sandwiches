@@ -18,6 +18,8 @@ class SandwichesController < ApplicationController
     def new
         @sandwich = Sandwich.new
         @sandwich.build_category
+        3.times{@sandwich.orders.build}
+
     end
 
     def create

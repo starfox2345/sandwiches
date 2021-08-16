@@ -12,7 +12,8 @@
 #     {name:"Egg Sandwich", temperature:"Hot", condition:"Fresh", price:3.00}
 # ])
 
-#  o = Order.create(name: "Weegan Sanmmiches")
-#  Sandwich.create([{order: o, condition: "Fresh", price: 15.5, temperature: "Cold"},
-# {order: o, condition: "Fresh", price: 21.5, temperature: "Hot"},
-# {order: o, condition: "Good", price: 19.5, temperature: "Warm"}])
+
+
+# Order.create([{delivery:"Yes"},
+#               {delivery:"No"}
+#             ])

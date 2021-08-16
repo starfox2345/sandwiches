@@ -7,8 +7,6 @@ class OrdersController < ApplicationController
 
     def show
         @order = Order.find(params[:id])
-        @order.build_sandwich
-
     end
     
     def most_expensive
@@ -19,12 +17,15 @@ class OrdersController < ApplicationController
     def new
         @sandwich = Sandwich.find_by(params[:sandwich_id])
         @order = @sandwich.orders.build
+        3.times do
+            @order
+        end
     end
 
     def create
         @sandwich = Sandwich.find_by(params[:sandwich_id])
-         @order = Order.new(order_params)
-         @order.user = current_user
+        @order = Order.new(order_params)
+        @order.user = current_user
          if @order.save
             redirect_to sandwich_order_path(@sandwich, @order)
          else
