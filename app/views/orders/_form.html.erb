@@ -7,7 +7,7 @@
       <%= c.text_field :name %><br>
     <% end %>
     
-    <%= f.fields_for :sandwich do |s| %>
+    <%= f.fields_for :sandwiches do |s| %>
       <%= s.label "Price" %>
       <%= s.text_field :price %><br>
       <%= s.label "Ingredient" %>
@@ -20,7 +20,7 @@
 
     <%= f.hidden_field :sandwich_id, value: @sandwich.id%>
 
-    <%= f.submit "Create/Edit Sandwich" %>
+    <%= f.submit "Create Sandwich" %>
 
 <% end %>
 

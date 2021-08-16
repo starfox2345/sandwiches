@@ -33,6 +33,7 @@ class OrdersController < ApplicationController
 
     def edit
         @order = Order.find_by(params[:id])
+        
     end
 
     def update
@@ -54,7 +55,7 @@ class OrdersController < ApplicationController
     private
 
     def order_params
-        params.require(:order).permit(:delivery, :sandwich_id, sandwich_attributes: [:price, :ingredient] )
+        params.require(:order).permit(:delivery, :sandwich_id, sandwich_attributes: [:price, :ingredient], category_attributes: [:name])
     end
     
 end
