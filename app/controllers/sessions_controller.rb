@@ -13,11 +13,11 @@ class SessionsController < ApplicationController
         u.email = auth['info']['email']
         u.username = auth['info']['name']
         u.password = SecureRandom.hex(7)
-    end
+      end
       if user.valid?
         sessions[:user_id] = user.id
         flash[:message] = "Login Successful"
-        redirect_to sandwiches_path
+        redirect_to orders_path
       else
 
       end
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
 
     def destroy
       session.delete(:user_id)
-      redirect_to sandwiches_path
+      redirect_to orders_path
     end
   
     private
