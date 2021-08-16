@@ -17,9 +17,7 @@ class OrdersController < ApplicationController
     def new
         @sandwich = Sandwich.find_by(params[:sandwich_id])
         @order = @sandwich.orders.build
-        3.times do
-            @order
-        end
+  
     end
 
     def create

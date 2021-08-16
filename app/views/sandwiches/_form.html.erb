@@ -17,13 +17,13 @@
 
     <%= f.fields_for :order do |s| %>
       <%= s.label "delivery?" %>
-      <%= s.collection_select :order_id, Order.all, :id, :delivery %><br>
+      <%= s.text_field :delivery %><br>
 
     <% end %>
 
     <%= f.hidden_field :sandwich_id, value: @sandwich.id%>
 
 
-    <%= f.submit "Create/Edit Sandwich" %>
+    <%= f.submit "Create Sandwich" %>
 
 <% end %>

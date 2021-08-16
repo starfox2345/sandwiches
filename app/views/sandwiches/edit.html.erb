@@ -1,2 +1,27 @@
 <h1>Edit Path</h1>
-<%= render partial: "form" %>
+<%= form_for([@order, @sandwich]) do |f| %>
+
+    <%= f.label :ingredient %>
+    <%= f.text_field :ingredient %><br>
+    <%= f.label :price %>
+    <%= f.number_field :price, step: 0.25 %><br>
+
+    <h3>Select an Existing Category:</h3>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+    <%= f.fields_for :category do |c| %>
+      <%= c.label "Category" %>
+      <%= c.text_field :name %><br>
+    <% end %>
+
+    <%= f.fields_for :order do |s| %>
+      <%= s.label "delivery?" %>
+      <%= s.text_field :delivery %><br>
+
+    <% end %>
+
+    <%= f.hidden_field :sandwich_id, value: @sandwich.id%>
+
+
+    <%= f.submit "Edit Sandwich" %>
+
+<% end %>

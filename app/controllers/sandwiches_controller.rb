@@ -1,4 +1,6 @@
 class SandwichesController < ApplicationController
+    # before_action :redirect_if_not_logged_in?
+
     layout 'sandwich'
         
     def most_expensive
@@ -12,13 +14,13 @@ class SandwichesController < ApplicationController
 
     def show
         @sandwich = Sandwich.find(params[:id])
+        
     end
 
 
     def new
         @sandwich = Sandwich.new
         @sandwich.build_category
-        3.times{@sandwich.orders.build}
 
     end
 

@@ -17,11 +17,13 @@
         <%= link_to "Sandwiches", sandwiches_path %> |
         <%= link_to "Create Category", new_category_path %> |
         <%= link_to "Categories", categories_path %>
-
+        <% if !logged_in? %>
         <%= button_to "Log in with Google", '/auth/google_oauth2' %>
+        <% else %>
         <%= button_to "Log Out", logout_path, method: 'delete' %>
+        <% end %>
         <% flash.each do |type, msg| %>
-          <%%= msg %>%>
+          <%= msg %>
         <% end %>
       <%= yield %>
   </body>
