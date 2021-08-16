@@ -11,7 +11,6 @@
   </head>
 
   <body>
-    <div>
         <%= link_to "Create Order Sandwich", new_order_path %> |
         <%= link_to "Orders", orders_path %> |
         <%= link_to "Create Sandwich", new_sandwich_path %> |
@@ -19,8 +18,7 @@
         <%= link_to "Create Category", new_category_path %> |
         <%= link_to "Categories", categories_path %>
 
-        <%= button_to "Log in with GitHub" %>
-    </div>
+        <%= button_to "Log in with Google", '/auth/google_oauth2' %>
       <%= yield %>
   </body>
 </html>
