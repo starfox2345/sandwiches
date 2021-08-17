@@ -2,7 +2,11 @@ class OrdersController < ApplicationController
     
 
     def index
-        @orders = Order.all
+        if params[:sandwich_id] && @sandwich = Sandwich.find_by_id(params[:sandwich_id])
+            @orders = @sandwich.orders
+        else
+            @orders = Order.all
+        end
     end
 
     def show

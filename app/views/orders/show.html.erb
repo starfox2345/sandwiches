@@ -2,8 +2,9 @@
 
 
 Ingredient: <%= @order.sandwich.ingredient %><br>
-Price: <%= number_to_currency(@order.sandwich.price) %>
-Delivery: <%= @order.delivery %>
+Price: <%= number_to_currency(@order.sandwich.price) %><br>
+Delivery: <%= @order.delivery %><br>
 
 <%= link_to "Edit", edit_order_path(@order) %>
 <%= link_to "Delete", order_path(@order), method: 'delete' %>
+
