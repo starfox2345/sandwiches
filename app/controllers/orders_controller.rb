@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
     end
 
     def show
-        @order = Order.find(params[:id])
+        @order = Order.find_by_id(params[:id])
     end
     
     def most_expensive
@@ -19,8 +19,15 @@ class OrdersController < ApplicationController
     end
 
     def new
-        @sandwich = Sandwich.find_by(params[:sandwich_id])
-        @order = @sandwich.orders.build
+        if params[:sandwich_id] && @sandwich = Sandwich.find_by_id(params[:sandwich_id])
+            @order = @sandwich.orders.build
+        else
+            @order = Order.new
+            @order.build_sandwich
+        end
+
+        # @sandwich = Sandwich.find_by(params[:sandwich_id])
+        # @order = @sandwich.orders.build
   
     end
 

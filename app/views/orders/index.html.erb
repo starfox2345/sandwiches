@@ -1,5 +1,8 @@
-<h1>Orders Sandwich</h1>
+<h1>Sandwich Orders</h1>
 
-<% @orders.each do |order| %>
-    <%= link_to order.delivery, order_path(order) %><br>
+<% if @sandwich %>
+<h2> <%= @sandwich.ingredient %> Orders:</h2>
+<% else %>
+<h2>All Orders</h2>
 <% end %>
+
