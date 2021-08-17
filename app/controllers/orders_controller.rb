@@ -32,11 +32,13 @@ class OrdersController < ApplicationController
     end
 
     def create
-        @sandwich = Sandwich.find_by(params[:sandwich_id])
         @order = Order.new(order_params)
-        @order.user = current_user
+        if params[:sandwich_id]
+            @sandwich = Sandwich.find_by_id(params[:sandwich_id])
+        end
+
          if @order.save
-            redirect_to sandwich_orders_path(@sandwich, @order)
+            redirect_to orders_path
          else
             render :new
          end
