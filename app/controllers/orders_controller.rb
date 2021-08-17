@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
         @order = Order.new(order_params)
         @order.user = current_user
          if @order.save
-            redirect_to sandwich_order_path(@sandwich, @order)
+            redirect_to sandwich_orders_path(@sandwich, @order)
          else
             render :new
          end
