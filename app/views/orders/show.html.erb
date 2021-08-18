@@ -1,10 +1,5 @@
 <h1>Orders Show Page</h1>
 
-
-Ingredient: <%= @order.sandwich.ingredient %><br>
-Price: <%= number_to_currency(@order.sandwich.price) %><br>
-Delivery: <%= @order.delivery %><br>
-
-<%= link_to "Edit", edit_order_path(@order) %>
-<%= link_to "Delete", order_path(@order), method: 'delete' %>
-
+<% @orders.each do |order| %>
+    <%= link_to order.delivery, orders_path(order) %><br>
+<% end %>

@@ -1,4 +1,4 @@
-<h1>Edit Path</h1>
+<h1>Edit</h1>
 <%= form_for([@order, @sandwich]) do |f| %>
 
     <%= f.label :ingredient %>
@@ -13,11 +13,6 @@
       <%= c.text_field :name %><br>
     <% end %>
 
-    <%= f.fields_for :order do |s| %>
-      <%= s.label "delivery?" %>
-      <%= s.text_field :delivery %><br>
-
-    <% end %>
 
     <%= f.hidden_field :sandwich_id, value: @sandwich.id%>
 

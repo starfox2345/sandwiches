@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
     
 
-    def index
+    def index     
         if params[:sandwich_id] && @sandwich = Sandwich.find_by_id(params[:sandwich_id])
             @orders = @sandwich.orders
         else
@@ -10,7 +10,8 @@ class OrdersController < ApplicationController
     end
 
     def show
-        @order = Order.find_by_id(params[:id])
+        @order = Sandwich.find_by_id(params[:sandwich_id])
+        # @order = Order.find_by_id(params[:id])
     end
     
     def most_expensive
@@ -25,23 +26,20 @@ class OrdersController < ApplicationController
             @order = Order.new
             @order.build_sandwich
         end
-
-        # @sandwich = Sandwich.find_by(params[:sandwich_id])
-        # @order = @sandwich.orders.build
-  
     end
 
     def create
         @order = Order.new(order_params)
+        @order.user = current_user
         if params[:sandwich_id]
             @sandwich = Sandwich.find_by_id(params[:sandwich_id])
         end
 
-         if @order.save
+        if @order.save
             redirect_to orders_path
-         else
+        else
             render :new
-         end
+        end
     end
 
     def edit
@@ -68,7 +66,7 @@ class OrdersController < ApplicationController
     private
 
     def order_params
-        params.require(:order).permit(:delivery, :sandwich_id, sandwich_attributes: [:price, :ingredient], category_attributes: [:name])
+        params.require(:order).permit(:delivery, :sandwich_id, sandwich_attributes: [:price, :ingredient])
     end
     
 end

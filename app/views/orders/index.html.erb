@@ -1,8 +1,6 @@
-<h1>Sandwich Orders</h1>
+<%= index_header_sandwich %>
 
-<% if @sandwich %>
-<h2> <%= @sandwich.ingredient %> Orders:</h2>
-<% else %>
-<h2>All Orders</h2>
+<% @orders.each do |order| %>
+    <%= link_to order.delivery, sandwich_path(order) %><br>
 <% end %>
 

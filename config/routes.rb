@@ -12,10 +12,11 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :orders, only: [:new, :create, :index]
+
   resources :sandwiches do
     resources :orders, shallow: true
   end
-  resources :orders, only: [:new, :create, :index]
   resources :categories
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
