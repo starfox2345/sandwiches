@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
     def index     
         if params[:sandwich_id] && @sandwich = Sandwich.find_by_id(params[:sandwich_id])
-            @orders = @sandwich.orders
+            # @orders = @sandwich.orders
         else
             @orders = Order.all
         end

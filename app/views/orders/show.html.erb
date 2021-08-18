@@ -1,5 +1,5 @@
 <h1>Orders Show Page</h1>
 
 <% @orders.each do |order| %>
-    <%= link_to order.delivery, orders_path(order) %><br>
+    <%= link_to order.delivery, orders_path %><br>
 <% end %>

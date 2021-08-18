@@ -9,6 +9,7 @@ class SandwichesController < ApplicationController
     end
 
     def index
+        @orders = Order.find_by_id(params[:order_id])
         @sandwiches = Sandwich.all
     end
 

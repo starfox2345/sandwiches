@@ -1,27 +1,10 @@
-<h1>Order Sandwich Edit</h1>
+<h1>Change Delivery</h1>
 <%= render partial: "layouts/error", locals: { object: @order } %>
 
 <%= form_for([@sandwich, @order]) do |f| %>
 
-    <%= f.fields_for :categories do |c| %>
-      <%= c.label "Category" %>
-      <%= c.text_field :name %><br>
-    <% end %>
-    
-    <%= f.fields_for :sandwich do |s| %>
-      <%= s.label "Price" %>
-      <%= s.text_field :price %><br>
-      <%= s.label "Ingredient" %>
-      <%= s.text_field :ingredient %><br>
-    <% end %>
-
-    
     <%= f.label :delivery %>
     <%= f.text_field :delivery %><br>
-
-    <% if @sandwich %>
-    <%= f.hidden_field :sandwich_id, value: @sandwich.id%>
-    <% end %>
 
     <%= f.submit "Edit Sandwich" %>
 

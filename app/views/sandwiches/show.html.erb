@@ -2,14 +2,16 @@
 
 Ingredient: <%= @sandwich.ingredient %><br>
 <%= sandwich_price %>
-<% delivery = @sandwich.orders.each {|order| order.delivery.present? } %>
 <% @sandwich.orders.each do |order| %>
 Delivery? <%= order.delivery %><br>
 <% end %>
 
+<% delivery = @sandwich.orders.each {|order| order.delivery.present? } %>
 <% if delivery.present? == true %>
 <% else %>
 <%= button_to "Set Delivery", new_sandwich_order_path(@sandwich) %> 
 <% end %>
+
+
 <%= link_to "Edit", edit_sandwich_path(@sandwich) %>
 <%= link_to "Delete", sandwich_path(@sandwich), method: 'delete' %>

@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
       if user.valid?
         session[:user_id] = user.id
         flash[:message] = "Login Successful"
-        redirect_to orders_path
+        redirect_to sandwiches_path
       else
         redirect_to login_path
       end
