@@ -12,6 +12,13 @@ Delivery? <%= order.delivery %><br>
 <%= button_to "Set Delivery", new_sandwich_order_path(@sandwich) %> 
 <% end %>
 
-
 <%= link_to "Edit", edit_sandwich_path(@sandwich) %>
-<%= link_to "Delete", sandwich_path(@sandwich), method: 'delete' %>
+<!-- <%= link_to "Delete", sandwich_path(@sandwich), method: 'delete' %> -->
+
+
+<style>
+body {
+    background-color: yellow;
+    opacity: 0.9;
+}
+</style>

@@ -18,6 +18,10 @@ class UsersController < ApplicationController
         end
     end
 
+    def alpha
+
+    end
+
     private
 
     def user_params

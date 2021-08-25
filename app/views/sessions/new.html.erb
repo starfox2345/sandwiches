@@ -1,3 +1,6 @@
+<%= link_to "Sign Up", signup_path %><br><br>
+
+
 <%= form_for(:user, url: login_path ) do |f| %>
     <%= f.label :email %>
     <%= f.text_field :email %>
@@ -5,6 +8,12 @@
     <%= f.password_field :password %>
 
 
-
     <%= f.submit "Log In" %>
 <% end %>
+
+<style>
+body {
+    background-color: tan;
+    opacity: 0.9;
+}
+</style>

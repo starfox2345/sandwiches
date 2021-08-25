@@ -1,15 +1,21 @@
 class OrdersController < ApplicationController
-    
+    before_action :find_order, only: [:edit, :update, :destroy]
+    before_action :redirect_if_not_authorized, only: [:edit, :update, :destroy]
 
-    def index     
+
+    def index
+        redirect_if_not_logged_in?
+
         if params[:sandwich_id] && @sandwich = Sandwich.find_by_id(params[:sandwich_id])
-            # @orders = @sandwich.orders
+            @orders = @sandwich.orders
         else
             @orders = Order.all
         end
     end
 
     def show
+        redirect_if_not_logged_in?
+
         @order = Sandwich.find_by_id(params[:sandwich_id])
         # @order = Order.find_by_id(params[:id])
     end
@@ -20,6 +26,8 @@ class OrdersController < ApplicationController
     end
 
     def new
+        redirect_if_not_logged_in?
+
         if params[:sandwich_id] && @sandwich = Sandwich.find_by_id(params[:sandwich_id])
             @order = @sandwich.orders.build
         else
@@ -43,6 +51,8 @@ class OrdersController < ApplicationController
     end
 
     def edit
+        redirect_if_not_logged_in?
+
         @order = Order.find_by(params[:id])
         
     end
@@ -68,5 +78,14 @@ class OrdersController < ApplicationController
     def order_params
         params.require(:order).permit(:delivery, :sandwich_id, sandwich_attributes: [:price, :ingredient])
     end
-    
+
+    def redirect_if_not_authorized
+        if @order.user != current_user
+            redirect_to sandwiches_path
+        end
+    end
+
+    def find_order
+        @order = Order.find(params[:id]) rescue not_found
+    end
 end

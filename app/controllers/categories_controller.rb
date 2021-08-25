@@ -10,6 +10,7 @@ class CategoriesController < ApplicationController
     end
 
     def new
+        redirect_if_not_logged_in?
         @category = Category.new
         @category.sandwiches.build
     end
@@ -24,6 +25,7 @@ class CategoriesController < ApplicationController
    end
 
    def edit
+        redirect_if_not_logged_in?
        @category = Category.find(params[:id])
    end
 
@@ -37,7 +39,9 @@ class CategoriesController < ApplicationController
    end
 
    def destroy
-       @category = Category.find(params[:id])       
+       redirect_if_not_logged_in?
+       @category = Category.find(params[:id])     
+       redirect_if_not_authorized  
        @category.destroy
        redirect_to categories_path
    end

@@ -24,9 +24,5 @@ class Sandwich < ApplicationRecord
         self.order(price: :desc)
     end
 
-    # def too_many_sandwiches
-    #     if Sandwich.all.length >= 10
-    #         errors.add(:base, :invalid, message: "You have too many sandwiches")
-    #     end
-    # end
+
 end

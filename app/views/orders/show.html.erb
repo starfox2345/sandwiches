@@ -1,5 +1,13 @@
 <h1>Orders Show Page</h1>
 
 <% @orders.each do |order| %>
+    
     <%= link_to order.delivery, orders_path %><br>
 <% end %>
+
+<style>
+body {
+    background-color: gray;
+    opacity: 0.9;
+}
+</style>

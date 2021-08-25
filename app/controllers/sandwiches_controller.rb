@@ -1,5 +1,7 @@
 class SandwichesController < ApplicationController
-    # before_action :redirect_if_not_logged_in?
+    before_action :find_sandwich, only: [:edit, :update, :destroy]
+    before_action :redirect_if_not_authorized, only: [:edit, :update, :destroy]
+
 
     layout 'sandwich'
         
@@ -14,12 +16,14 @@ class SandwichesController < ApplicationController
     end
 
     def show
-        @sandwich = Sandwich.find(params[:id])
-        
+        redirect_if_not_logged_in?
+        @sandwich = Sandwich.find(params[:id]) 
+  
     end
 
 
     def new
+        redirect_if_not_logged_in?
         @sandwich = Sandwich.new
         @sandwich.build_category
 
@@ -49,15 +53,28 @@ class SandwichesController < ApplicationController
     end
 
     def destroy
-        @sandwich = Sandwich.find_by_id(params[:id])       
+        @sandwich = Sandwich.find_by_id(params[:id])
         @sandwich.destroy
         redirect_to sandwiches_path
     end
 
     private
 
-    def sandwich_params
-        params.require(:sandwich).permit(:price, :ingredient, :category_id, category_attributes: [:name], order_attributes: [:delivery])
+    def find_sandwich
+        @sandwich = Sandwich.find(params[:id]) rescue not_found
     end
-    
+
+    def sandwich_params
+        params.require(:sandwich).permit(:price, :ingredient, :category_id, category_attributes: [:name])
+    end
+
+    def redirect_if_not_authorized
+        
+        if @sandwich.users != current_user
+            byebug
+            redirect_to sandwiches_path
+            
+        end
+    end
+
 end

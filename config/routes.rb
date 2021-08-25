@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/users/alpha', to: 'users#alpha'
 
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
   get '/login', to: 'sessions#new'
@@ -18,6 +19,8 @@ Rails.application.routes.draw do
     resources :orders, shallow: true
   end
   resources :categories
+
+  root to: 'sessions#new'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
