@@ -9,7 +9,7 @@ Delivery? <%= order.delivery %><br>
 <% delivery = @sandwich.orders.each {|order| order.delivery.present? } %>
 <% if delivery.present? == true %>
 <% else %>
-<%= button_to "Set Delivery", new_sandwich_order_path(@sandwich) %> 
+<%= link_to "Set Delivery", new_sandwich_order_path(@sandwich) %><br> 
 <% end %>
 
 <%= link_to "Edit", edit_sandwich_path(@sandwich) %>

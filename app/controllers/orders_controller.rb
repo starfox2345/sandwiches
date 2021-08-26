@@ -20,10 +20,7 @@ class OrdersController < ApplicationController
         # @order = Order.find_by_id(params[:id])
     end
     
-    def most_expensive
-        @orders = Order.most_expensive
-        render :index
-    end
+
 
     def new
         redirect_if_not_logged_in?

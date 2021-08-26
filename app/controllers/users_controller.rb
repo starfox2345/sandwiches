@@ -18,9 +18,6 @@ class UsersController < ApplicationController
         end
     end
 
-    def alpha
-
-    end
 
     private
 
